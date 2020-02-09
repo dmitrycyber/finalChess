@@ -1,6 +1,7 @@
 package com.ivoninsky.chess.figures;
 
 import com.ivoninsky.chess.coordinates.Coordinate;
+import com.ivoninsky.chess.coordinates.CoordinatesContainer;
 import com.ivoninsky.chess.interfaces.FiguresContainer;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -11,10 +12,9 @@ public class Bishop extends Figure {
     private String type;
 
     public Bishop(Coordinate coordinate, String type) {
-        if (type.equals("b")){
+        if (type.equals("b")) {
             bishop = new ImageView(new Image("/images/bB.png"));
-        }
-        else {
+        } else {
             bishop = new ImageView(new Image("/images/wB.png"));
         }
         bishop.setX(coordinate.getCoordinateX());
@@ -27,22 +27,91 @@ public class Bishop extends Figure {
 
     @Override
     public void moveFigure(FiguresContainer figuresContainer) {
-
+        bishop.setOnMouseReleased(event ->
+        {
+            double sceneX = event.getSceneX();
+            double sceneY = event.getSceneY();
+            if (sceneX > 800 || sceneY > 800 || sceneX < 0 || sceneY < 0) {
+                System.out.println("It's impossible to move here!");
+                return;
+            }
+            int destinationX = (int) (sceneX - (sceneX % 100));
+            int destinationY = (int) (sceneY - (sceneY % 100));
+            if (isPossibleToMove(destinationX, destinationY)) {
+                move(destinationX, destinationY);
+            }
+            else if (isPossibleToFight(destinationX, destinationY)) {
+                FiguresContainer.removeFigure(new Coordinate(destinationX, destinationY));
+                System.out.println(FiguresContainer.getFigureList());
+                move(destinationX, destinationY);
+            }
+            else {
+                System.out.println("It's impossible to move here!");
+            }
+        });
     }
 
     @Override
     public boolean isPossibleToMove(int destinationX, int destinationY) {
+        int currentX = (int) this.coordinate.getCoordinateX();
+        int currentY = (int) this.coordinate.getCoordinateY();
+        int multiply = Math.abs(currentY - destinationY);
+        if (!CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(destinationX, destinationY)).equals("n")) {
+            return false;
+        }
+        if (Math.abs(destinationY - currentY) == Math.abs(destinationX - currentX)) {
+            System.out.println("multiply= " + multiply);
+            if (currentX < destinationX && currentY < destinationY) {
+                for (int i = 100; i < multiply; i += 100) {
+                    if (!CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(currentX + i, currentY + i)).equals("n")) {
+                        return false;
+                    }
+                }
+            }
+            else  if (currentX > destinationX && currentY > destinationY){
+                for (int i = 100; i < multiply; i += 100) {
+                    if (!CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(currentX - i, currentY - i)).equals("n")) {
+                        return false;
+                    }
+                }
+            }
+            else  if (currentX < destinationX && currentY > destinationY){
+                for (int i = 100; i < multiply; i += 100) {
+                    if (!CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(currentX + i, currentY - i)).equals("n")) {
+                        return false;
+                    }
+                }
+            }
+            else  if (currentX > destinationX && currentY < destinationY){
+                for (int i = 100; i < multiply; i += 100) {
+                    if (!CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(currentX - i, currentY + i)).equals("n")) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
         return false;
     }
 
     @Override
     public boolean isPossibleToFight(int destinationX, int destinationY) {
-        return false;
+        if (type.equals("b")) {
+            return CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(destinationX, destinationY)).equals("w");
+        }
+        return CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(destinationX, destinationY)).equals("b");
     }
 
     @Override
     public void move(int destinationX, int destinationY) {
-
+        CoordinatesContainer.getInstance().getCoordinateStringMap().put(coordinate, "n");
+        bishop.setX(destinationX);
+        bishop.setY(destinationY);
+        bishop.toFront();
+        coordinate.setCoordinateX(destinationX);
+        coordinate.setCoordinateY(destinationY);
+        CoordinatesContainer.getInstance().getCoordinateStringMap().put(coordinate, getTypeOfFigure());
+        CoordinatesContainer.getInstance().printField();
     }
 
     @Override

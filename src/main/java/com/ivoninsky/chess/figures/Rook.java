@@ -37,14 +37,15 @@ public class Rook extends Figure {
             }
             int destinationX = (int) (sceneX - (sceneX % 100));
             int destinationY = (int) (sceneY - (sceneY % 100));
-            if (isPossibleToFight(destinationX, destinationY)) {
+
+            if (isPossibleToMove(destinationX, destinationY)) {
+                move(destinationX, destinationY);
+            }
+            else if (isPossibleToFight(destinationX, destinationY)) {
                 FiguresContainer.removeFigure(new Coordinate(destinationX, destinationY));
                 move(destinationX, destinationY);
-
-            } else if (isPossibleToMove(destinationX, destinationY)) {
-                move(destinationX, destinationY);
-
-            } else {
+            }
+            else {
                 System.out.println("It's impossible to move here!");
             }
         });
@@ -66,7 +67,9 @@ public class Rook extends Figure {
     public boolean isPossibleToMove(int destinationX, int destinationY) {
         int currentX = (int) this.coordinate.getCoordinateX();
         int currentY = (int) this.coordinate.getCoordinateY();
-
+        if (destinationX != currentX & destinationY != currentY) {
+            return false;
+        }
         if (destinationX == currentX) {
             if (destinationY > currentY) {
                 for (double i = currentY + 100; i <= destinationY; i += 100) {

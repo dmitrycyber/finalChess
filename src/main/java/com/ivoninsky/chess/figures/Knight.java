@@ -41,7 +41,6 @@ public class Knight extends Figure {
             int destinationY = (int) (sceneY - (sceneY % 100));
             if (isPossibleToFight(destinationX, destinationY)){
                 FiguresContainer.removeFigure(new Coordinate(destinationX, destinationY));
-                System.out.println(FiguresContainer.getFigureList());
                 move(destinationX, destinationY);
             }
             else if (isPossibleToMove(destinationX, destinationY)){
@@ -67,7 +66,6 @@ public class Knight extends Figure {
         else if (Math.abs(destinationY - currentY)  == 100 && Math.abs(destinationX - currentX) == 200){
             return true;
         }
-
         return false;
     }
 
