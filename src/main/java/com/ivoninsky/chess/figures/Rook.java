@@ -26,7 +26,7 @@ public class Rook extends Figure {
     }
 
     @Override
-    public void moveFigure(FiguresContainer figuresContainer) {
+    public void moveFigure() {
         rook.setOnMouseReleased(event ->
         {
             double sceneX = event.getSceneX();
@@ -39,28 +39,16 @@ public class Rook extends Figure {
             int destinationY = (int) (sceneY - (sceneY % 100));
 
             if (isPossibleToMove(destinationX, destinationY)) {
-                move(destinationX, destinationY);
+                move(destinationX, destinationY, rook, coordinate, type);
             }
             else if (isPossibleToFight(destinationX, destinationY)) {
                 FiguresContainer.removeFigure(new Coordinate(destinationX, destinationY));
-                move(destinationX, destinationY);
+                move(destinationX, destinationY, rook, coordinate, type);
             }
             else {
                 System.out.println("It's impossible to move here!");
             }
         });
-    }
-
-    @Override
-    public void move(int destinationX, int destinationY) {
-        CoordinatesContainer.getInstance().getCoordinateStringMap().put(coordinate, "n");
-        rook.setX(destinationX);
-        rook.setY(destinationY);
-        rook.toFront();
-        coordinate.setCoordinateX(destinationX);
-        coordinate.setCoordinateY(destinationY);
-        CoordinatesContainer.getInstance().getCoordinateStringMap().put(coordinate, getTypeOfFigure());
-        CoordinatesContainer.getInstance().printField();
     }
 
     @Override

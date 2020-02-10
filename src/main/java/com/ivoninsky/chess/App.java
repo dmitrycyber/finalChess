@@ -1,3 +1,5 @@
+package com.ivoninsky.chess;
+
 import com.ivoninsky.chess.border.Border;
 import com.ivoninsky.chess.figures.Figure;
 import com.ivoninsky.chess.interfaces.FiguresContainer;
@@ -28,8 +30,9 @@ public class App extends Application {
 
         for (Figure figure : figureList){
             root.getChildren().add(figure.getImage());
-            figure.moveFigure(figuresContainer);
+            figure.moveFigure();
         }
         primaryStage.show();
+
     }
 }

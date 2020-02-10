@@ -29,7 +29,7 @@ public class King extends Figure {
 
 
     @Override
-    public void moveFigure(FiguresContainer figuresContainer) {
+    public void moveFigure() {
         king.setOnMouseReleased(event ->
         {
             double sceneX = event.getSceneX();
@@ -42,10 +42,10 @@ public class King extends Figure {
             int destinationY = (int) (sceneY - (sceneY % 100));
             if (isPossibleToFight(destinationX, destinationY)){
                 FiguresContainer.removeFigure(new Coordinate(destinationX, destinationY));
-                move(destinationX, destinationY);
+                move(destinationX, destinationY, king, coordinate, type);
             }
             else if (isPossibleToMove(destinationX, destinationY)){
-                move(destinationX, destinationY);
+                move(destinationX, destinationY, king, coordinate, type);
 
             }
             else {
@@ -71,18 +71,6 @@ public class King extends Figure {
             return CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(destinationX, destinationY)).equals("w");
         }
         return CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(destinationX, destinationY)).equals("b");
-    }
-
-    @Override
-    public void move(int destinationX, int destinationY) {
-        CoordinatesContainer.getInstance().getCoordinateStringMap().put(coordinate, "n");
-        king.setX(destinationX);
-        king.setY(destinationY);
-        king.toFront();
-        coordinate.setCoordinateX(destinationX);
-        coordinate.setCoordinateY(destinationY);
-        CoordinatesContainer.getInstance().getCoordinateStringMap().put(coordinate, getTypeOfFigure());
-        CoordinatesContainer.getInstance().printField();
     }
 
     @Override

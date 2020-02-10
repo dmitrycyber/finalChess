@@ -29,7 +29,7 @@ public class Queen extends Figure {
 
 
     @Override
-    public void moveFigure(FiguresContainer figuresContainer) {
+    public void moveFigure() {
         queen.setOnMouseReleased(event ->
         {
             double sceneX = event.getSceneX();
@@ -41,12 +41,12 @@ public class Queen extends Figure {
             int destinationX = (int) (sceneX - (sceneX % 100));
             int destinationY = (int) (sceneY - (sceneY % 100));
             if (isPossibleToMove(destinationX, destinationY)) {
-                move(destinationX, destinationY);
+                move(destinationX, destinationY, queen, coordinate, type);
             }
             else if (isPossibleToFight(destinationX, destinationY)) {
                 FiguresContainer.removeFigure(new Coordinate(destinationX, destinationY));
                 System.out.println(FiguresContainer.getFigureList());
-                move(destinationX, destinationY);
+                move(destinationX, destinationY, queen, coordinate, type);
             }
             else {
                 System.out.println("It's impossible to move here!");
@@ -137,18 +137,6 @@ public class Queen extends Figure {
             return CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(destinationX, destinationY)).equals("w");
         }
         return CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(destinationX, destinationY)).equals("b");
-    }
-
-    @Override
-    public void move(int destinationX, int destinationY) {
-        CoordinatesContainer.getInstance().getCoordinateStringMap().put(coordinate, "n");
-        queen.setX(destinationX);
-        queen.setY(destinationY);
-        queen.toFront();
-        coordinate.setCoordinateX(destinationX);
-        coordinate.setCoordinateY(destinationY);
-        CoordinatesContainer.getInstance().getCoordinateStringMap().put(coordinate, getTypeOfFigure());
-        CoordinatesContainer.getInstance().printField();
     }
 
     @Override

@@ -4,17 +4,12 @@ import com.ivoninsky.chess.coordinates.Coordinate;
 import com.ivoninsky.chess.coordinates.CoordinatesContainer;
 import com.ivoninsky.chess.figures.*;
 import javafx.scene.Group;
-import javafx.scene.Node;
-import sun.applet.Main;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 public class FiguresContainer {
-    private CoordinatesContainer instance = CoordinatesContainer.getInstance();
-    private Map<Coordinate, String> coordinateStringMap = instance.getCoordinateStringMap();
     private static List<Figure> figureList = new ArrayList<>();
 
     private Pawn whitePawn1;
@@ -54,6 +49,7 @@ public class FiguresContainer {
     private static Group root;
 
     public FiguresContainer(Group root) {
+
         this.root = root;
         whitePawn1 = new Pawn(CoordinatesContainer.getInstance().getA2(), "w");
         whitePawn2 = new Pawn(CoordinatesContainer.getInstance().getB2(), "w");
@@ -95,7 +91,6 @@ public class FiguresContainer {
 
     private void addFigureToCoordinateMap(Figure... figures){
         for (Figure figure : figures){
-            //coordinateStringMap.put(figure.getCoordinate(), figure.getTypeOfFigure());
             CoordinatesContainer.getInstance().getCoordinateStringMap().put(figure.getCoordinate(), figure.getTypeOfFigure());
         }
     }
@@ -118,5 +113,12 @@ public class FiguresContainer {
         CoordinatesContainer.getInstance().getCoordinateStringMap().remove(figure);
         figureList.remove(figure);
         root.getChildren().removeAll(figure.getImage());
+    }
+
+    public static List<Figure> getFiguresFromType(String type){
+        return figureList
+                .stream()
+                .filter(figure -> figure.getTypeOfFigure().equals(type))
+                .collect(Collectors.toList());
     }
 }

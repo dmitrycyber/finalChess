@@ -28,7 +28,7 @@ public class Pawn extends Figure {
     }
 
     @Override
-    public void moveFigure(FiguresContainer figuresContainer) {
+    public void moveFigure() {
         pawn.setOnMouseReleased(event ->
         {
             double sceneX = event.getSceneX();
@@ -41,27 +41,16 @@ public class Pawn extends Figure {
             int destinationY = (int) (sceneY - (sceneY % 100));
             if (isPossibleToFight(destinationX, destinationY)){
                 FiguresContainer.removeFigure(new Coordinate(destinationX, destinationY));
-                move(destinationX, destinationY);
+                move(destinationX, destinationY, pawn, coordinate, type);
             }
             else if (isPossibleToMove(destinationX, destinationY)){
-                move(destinationX, destinationY);
+                move(destinationX, destinationY, pawn, coordinate, type);
 
             }
             else {
                 System.out.println("It's impossible to move here!");
             }
         });
-    }
-
-    public void move(int destinationX, int destinationY) {
-        CoordinatesContainer.getInstance().getCoordinateStringMap().put(coordinate, "n");
-        pawn.setX(destinationX);
-        pawn.setY(destinationY);
-        pawn.toFront();
-        coordinate.setCoordinateX(destinationX);
-        coordinate.setCoordinateY(destinationY);
-        CoordinatesContainer.getInstance().getCoordinateStringMap().put(coordinate, getTypeOfFigure());
-        CoordinatesContainer.getInstance().printField();
     }
 
     @Override
