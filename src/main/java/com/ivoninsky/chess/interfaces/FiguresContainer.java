@@ -110,6 +110,14 @@ public class FiguresContainer {
                 figure = figureList.get(i);
             }
         }
+        if (figure instanceof King){
+            if (figure.getTypeOfFigure().equals("w")){
+                System.out.println("BLACK WINNER!!!");
+                System.exit(1);
+            }
+            System.out.println("WHITE WINNER!!!");
+            System.exit(1);
+        }
         CoordinatesContainer.getInstance().getCoordinateStringMap().remove(figure);
         figureList.remove(figure);
         root.getChildren().removeAll(figure.getImage());
