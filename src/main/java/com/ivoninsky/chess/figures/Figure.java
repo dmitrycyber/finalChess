@@ -1,15 +1,14 @@
 package com.ivoninsky.chess.figures;
 
 import com.ivoninsky.chess.coordinates.Coordinate;
-import com.ivoninsky.chess.coordinates.CoordinatesContainer;
-import com.ivoninsky.chess.interfaces.FiguresContainer;
+import com.ivoninsky.chess.containers.CoordinatesContainer;
+import com.ivoninsky.chess.containers.FiguresContainer;
+import javafx.scene.effect.Shadow;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 
 
 public abstract class Figure {
-    private ImageView imageView;
-    private Coordinate coordinate;
-    private String type;
 
     public abstract void moveFigure();
     public void move(int destinationX, int destinationY, ImageView imageView, Coordinate coordinate, String type){
@@ -40,6 +39,16 @@ public abstract class Figure {
             }
         }
     }
+    public void setMoveAnimation(ImageView imageView){
+        Shadow shadow = new Shadow(1, Color.RED);
+        imageView.setOnMouseDragged(event ->
+        {
+            imageView.setX(event.getSceneX()-50);
+            imageView.setY(event.getSceneY()-50);
+            imageView.setEffect(shadow);
+        });
+    }
+
     public abstract boolean isPossibleToMove(int destinationX, int destinationY);
     public abstract boolean isPossibleToFight(int destinationX, int destinationY);
     public abstract String getTypeOfFigure();

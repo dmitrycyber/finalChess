@@ -1,4 +1,6 @@
-package com.ivoninsky.chess.coordinates;
+package com.ivoninsky.chess.containers;
+
+import com.ivoninsky.chess.coordinates.Coordinate;
 
 import java.util.HashMap;
 import java.util.Map;

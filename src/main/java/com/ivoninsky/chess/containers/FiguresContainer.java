@@ -1,7 +1,6 @@
-package com.ivoninsky.chess.interfaces;
+package com.ivoninsky.chess.containers;
 
 import com.ivoninsky.chess.coordinates.Coordinate;
-import com.ivoninsky.chess.coordinates.CoordinatesContainer;
 import com.ivoninsky.chess.figures.*;
 import javafx.scene.Group;
 import java.util.ArrayList;

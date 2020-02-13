@@ -2,7 +2,7 @@ package com.ivoninsky.chess;
 
 import com.ivoninsky.chess.border.Border;
 import com.ivoninsky.chess.figures.Figure;
-import com.ivoninsky.chess.interfaces.FiguresContainer;
+import com.ivoninsky.chess.containers.FiguresContainer;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;

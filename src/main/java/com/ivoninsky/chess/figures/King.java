@@ -1,8 +1,8 @@
 package com.ivoninsky.chess.figures;
 
 import com.ivoninsky.chess.coordinates.Coordinate;
-import com.ivoninsky.chess.coordinates.CoordinatesContainer;
-import com.ivoninsky.chess.interfaces.FiguresContainer;
+import com.ivoninsky.chess.containers.CoordinatesContainer;
+import com.ivoninsky.chess.containers.FiguresContainer;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -30,11 +30,15 @@ public class King extends Figure {
 
     @Override
     public void moveFigure() {
+        setMoveAnimation(king);
         king.setOnMouseReleased(event ->
         {
+            king.setEffect(null);
             double sceneX = event.getSceneX();
             double sceneY = event.getSceneY();
             if (sceneX > 800 || sceneY > 800 || sceneX < 0 || sceneY < 0){
+                king.setX(coordinate.getCoordinateX());
+                king.setY(coordinate.getCoordinateY());
                 System.out.println("It's impossible to move here!");
                 return;
             }
@@ -49,6 +53,8 @@ public class King extends Figure {
 
             }
             else {
+                king.setX(coordinate.getCoordinateX());
+                king.setY(coordinate.getCoordinateY());
                 System.out.println("It's impossible to move here!");
             }
         });

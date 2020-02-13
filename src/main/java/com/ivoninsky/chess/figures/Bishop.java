@@ -1,8 +1,9 @@
 package com.ivoninsky.chess.figures;
 
 import com.ivoninsky.chess.coordinates.Coordinate;
-import com.ivoninsky.chess.coordinates.CoordinatesContainer;
-import com.ivoninsky.chess.interfaces.FiguresContainer;
+import com.ivoninsky.chess.containers.CoordinatesContainer;
+import com.ivoninsky.chess.containers.FiguresContainer;
+import javafx.scene.effect.ColorInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -27,11 +28,16 @@ public class Bishop extends Figure {
 
     @Override
     public void moveFigure() {
+        ColorInput colorInput = new ColorInput();
+        setMoveAnimation(bishop);
         bishop.setOnMouseReleased(event ->
         {
+            bishop.setEffect(null);
             double sceneX = event.getSceneX();
             double sceneY = event.getSceneY();
             if (sceneX > 800 || sceneY > 800 || sceneX < 0 || sceneY < 0) {
+                bishop.setX(coordinate.getCoordinateX());
+                bishop.setY(coordinate.getCoordinateY());
                 System.out.println("It's impossible to move here!");
                 return;
             }
@@ -46,6 +52,8 @@ public class Bishop extends Figure {
                 move(destinationX, destinationY, bishop, coordinate, type);
             }
             else {
+                bishop.setX(coordinate.getCoordinateX());
+                bishop.setY(coordinate.getCoordinateY());
                 System.out.println("It's impossible to move here!");
             }
         });
