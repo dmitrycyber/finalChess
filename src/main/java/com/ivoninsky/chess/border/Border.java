@@ -9,7 +9,7 @@ public class Border {
     private GraphicsContext gc;
 
     public Border() {
-        canvas = new Canvas(800, 800);
+        canvas = new Canvas(BorderSize.getAC(), BorderSize.getAC());
         gc = canvas.getGraphicsContext2D();
     }
 
@@ -21,13 +21,13 @@ public class Border {
 
     private void paintLightCells(){
         gc.setFill(Color.BISQUE);
-        for (int j = 0; j < 800; j+=100) {
-            for (int i = 0; i < 800; i+=200) {
-                if ((j / 100) % 2 != 0){
-                    gc.fillRect(i + 100, j, 100, 100);
+        for (int j = 0; j < BorderSize.getAC(); j+=BorderSize.getRC()) {
+            for (int i = 0; i < BorderSize.getAC(); i+=BorderSize.getRC()*2) {
+                if ((j / BorderSize.getRC()) % 2 != 0){
+                    gc.fillRect(i + BorderSize.getRC(), j, BorderSize.getRC(), BorderSize.getRC());
                 }
                 else {
-                    gc.fillRect(i, j, 100, 100);
+                    gc.fillRect(i, j, BorderSize.getRC(), BorderSize.getRC());
                 }
             }
         }
@@ -35,13 +35,13 @@ public class Border {
 
     private void paintDarkCells(){
         gc.setFill(Color.GRAY);
-        for (int j = 0; j < 800; j+=100) {
-            for (int i = 0; i < 800; i+=200) {
-                if ((j / 100) % 2 == 0){
-                    gc.fillRect(i + 100, j, 100, 100);
+        for (int j = 0; j < BorderSize.getAC(); j+=BorderSize.getRC()) {
+            for (int i = 0; i < BorderSize.getAC(); i+=BorderSize.getRC()*2) {
+                if ((j / BorderSize.getRC()) % 2 == 0){
+                    gc.fillRect(i + BorderSize.getRC(), j, BorderSize.getRC(), BorderSize.getRC());
                 }
                 else {
-                    gc.fillRect(i, j, 100, 100);
+                    gc.fillRect(i, j, BorderSize.getRC(), BorderSize.getRC());
                 }
             }
         }

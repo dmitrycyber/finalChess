@@ -1,5 +1,6 @@
 package com.ivoninsky.chess.figures;
 
+import com.ivoninsky.chess.border.BorderSize;
 import com.ivoninsky.chess.coordinates.Coordinate;
 import com.ivoninsky.chess.containers.CoordinatesContainer;
 import com.ivoninsky.chess.containers.FiguresContainer;
@@ -19,8 +20,8 @@ public class Rook extends Figure {
         }
         rook.setX(coordinate.getCoordinateX());
         rook.setY(coordinate.getCoordinateY());
-        rook.setFitHeight(100);
-        rook.setFitWidth(100);
+        rook.setFitHeight(BorderSize.getRC());
+        rook.setFitWidth(BorderSize.getRC());
         this.coordinate = new Coordinate(rook.getX(), rook.getY());
         this.type = type;
     }

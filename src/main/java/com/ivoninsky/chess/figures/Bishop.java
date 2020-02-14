@@ -1,5 +1,6 @@
 package com.ivoninsky.chess.figures;
 
+import com.ivoninsky.chess.border.BorderSize;
 import com.ivoninsky.chess.coordinates.Coordinate;
 import com.ivoninsky.chess.containers.CoordinatesContainer;
 import com.ivoninsky.chess.containers.FiguresContainer;
@@ -20,8 +21,8 @@ public class Bishop extends Figure {
         }
         bishop.setX(coordinate.getCoordinateX());
         bishop.setY(coordinate.getCoordinateY());
-        bishop.setFitHeight(100);
-        bishop.setFitWidth(100);
+        bishop.setFitHeight(BorderSize.getRC());
+        bishop.setFitWidth(BorderSize.getRC());
         this.coordinate = new Coordinate(bishop.getX(), bishop.getY());
         this.type = type;
     }

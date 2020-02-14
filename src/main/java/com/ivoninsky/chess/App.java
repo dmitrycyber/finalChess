@@ -1,6 +1,7 @@
 package com.ivoninsky.chess;
 
 import com.ivoninsky.chess.border.Border;
+import com.ivoninsky.chess.border.BorderSize;
 import com.ivoninsky.chess.figures.Figure;
 import com.ivoninsky.chess.containers.FiguresContainer;
 import javafx.application.Application;
@@ -19,8 +20,8 @@ public class App extends Application {
 
     public void start(Stage primaryStage) throws Exception {
         Group root = new Group();
-        Scene scene = new Scene(root, 800, 800);
         Canvas canvas = new Border().paintBorder();
+        Scene scene = new Scene(root, BorderSize.getAC(), BorderSize.getAC());
         root.getChildren().add(canvas);
         primaryStage.setTitle("Chess");
         primaryStage.setScene(scene);
