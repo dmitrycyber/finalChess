@@ -13,10 +13,9 @@ public class Pawn extends Figure {
     private String type;
 
     public Pawn(Coordinate coordinate, String type) {
-        if (type.equals("b")){
+        if (type.equals("b")) {
             pawn = new ImageView(new Image("/images/bP.png"));
-        }
-        else {
+        } else {
             pawn = new ImageView(new Image("/images/wP.png"));
         }
         pawn.setX(coordinate.getCoordinateX());
@@ -35,7 +34,7 @@ public class Pawn extends Figure {
             pawn.setEffect(null);
             double sceneX = event.getSceneX();
             double sceneY = event.getSceneY();
-            if (sceneX > 800 || sceneY > 800 || sceneX < 0 || sceneY < 0){
+            if (sceneX > 800 || sceneY > 800 || sceneX < 0 || sceneY < 0) {
                 System.out.println("It's impossible to move here!");
                 pawn.setX(coordinate.getCoordinateX());
                 pawn.setY(coordinate.getCoordinateY());
@@ -43,14 +42,12 @@ public class Pawn extends Figure {
             }
             int destinationX = (int) (sceneX - (sceneX % 100));
             int destinationY = (int) (sceneY - (sceneY % 100));
-            if (isPossibleToFight(destinationX, destinationY)){
+            if (isPossibleToFight(destinationX, destinationY)) {
                 FiguresContainer.removeFigure(new Coordinate(destinationX, destinationY));
                 move(destinationX, destinationY, pawn, coordinate, type);
-            }
-            else if (isPossibleToMove(destinationX, destinationY)){
+            } else if (isPossibleToMove(destinationX, destinationY)) {
                 move(destinationX, destinationY, pawn, coordinate, type);
-            }
-            else {
+            } else {
                 pawn.setX(coordinate.getCoordinateX());
                 pawn.setY(coordinate.getCoordinateY());
                 System.out.println("It's impossible to move here!");
@@ -68,13 +65,30 @@ public class Pawn extends Figure {
         int additionalXWhite = (int) Move.UP.getCoordinate().getCoordinateX();
         int additionalYWhite = (int) Move.UP.getCoordinate().getCoordinateY();
 
-        if (type.equals("b")){
-            if (destinationX == currentX + additionalXBlack && destinationY == currentY + additionalYBlack && CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(destinationX, destinationY)).equals("n")){
+        if (type.equals("b")) {
+            if (coordinate.getCoordinateY() == 100) {
+                if (destinationX == currentX + additionalXBlack * 2 && destinationY == currentY + additionalYBlack * 2
+                        && CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(destinationX, destinationY)).equals("n")
+                        && CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(destinationX, destinationY - 100)).equals("n")
+                ) {
+                    return true;
+                }
+            }
+            if (destinationX == currentX + additionalXBlack && destinationY == currentY + additionalYBlack
+                    && CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(destinationX, destinationY)).equals("n")) {
                 return true;
             }
-        }
-        else if (type.equals("w")){
-            if (destinationX == currentX + additionalXWhite && destinationY == currentY + additionalYWhite && CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(destinationX, destinationY)).equals("n")){
+        } else if (type.equals("w")) {
+            if (coordinate.getCoordinateY() == 600) {
+                if (destinationX == currentX + additionalXWhite * 2 && destinationY == currentY + additionalYWhite * 2
+                        && CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(destinationX, destinationY)).equals("n")
+                        && CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(destinationX, destinationY + 100)).equals("n")
+                ) {
+                    return true;
+                }
+            }
+            if (destinationX == currentX + additionalXWhite && destinationY == currentY + additionalYWhite
+                    && CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(destinationX, destinationY)).equals("n")) {
                 return true;
             }
         }
@@ -105,17 +119,16 @@ public class Pawn extends Figure {
         int checkY1White = currentY + additionalY1White;
         int checkX2White = currentX + additionalX2White;
         int checkY2White = currentY + additionalY2White;
-        if (type.equals("b")){
-            if ((checkX1Black == destinationX && checkY1Black == destinationY) || (checkX2Black == destinationX && checkY2Black == destinationY)){
-                if (CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(destinationX, destinationY)).equals("w")){
+        if (type.equals("b")) {
+            if ((checkX1Black == destinationX && checkY1Black == destinationY) || (checkX2Black == destinationX && checkY2Black == destinationY)) {
+                if (CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(destinationX, destinationY)).equals("w")) {
                     return true;
                 }
             }
 
-        }
-        else {
-            if ((checkX1White == destinationX && checkY1White == destinationY) || (checkX2White == destinationX && checkY2White == destinationY)){
-                if (CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(destinationX, destinationY)).equals("b")){
+        } else {
+            if ((checkX1White == destinationX && checkY1White == destinationY) || (checkX2White == destinationX && checkY2White == destinationY)) {
+                if (CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(destinationX, destinationY)).equals("b")) {
                     return true;
                 }
             }
