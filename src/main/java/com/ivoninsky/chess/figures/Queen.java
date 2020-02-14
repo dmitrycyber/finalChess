@@ -13,10 +13,9 @@ public class Queen extends Figure {
     private String type;
 
     public Queen(Coordinate coordinate, String type) {
-        if (type.equals("b")){
+        if (type.equals("b")) {
             queen = new ImageView(new Image("/images/bQ.png"));
-        }
-        else {
+        } else {
             queen = new ImageView(new Image("/images/wQ.png"));
         }
         queen.setX(coordinate.getCoordinateX());
@@ -28,7 +27,6 @@ public class Queen extends Figure {
     }
 
 
-
     @Override
     public void moveFigure() {
         setMoveAnimation(queen);
@@ -37,23 +35,21 @@ public class Queen extends Figure {
             queen.setEffect(null);
             double sceneX = event.getSceneX();
             double sceneY = event.getSceneY();
-            if (sceneX > 800 || sceneY > 800 || sceneX < 0 || sceneY < 0) {
+            if (sceneX > BorderSize.getRC() * 8 || sceneY > BorderSize.getRC() * 8 || sceneX < 0 || sceneY < 0) {
                 System.out.println("It's impossible to move here!");
                 queen.setX(coordinate.getCoordinateX());
                 queen.setY(coordinate.getCoordinateY());
                 return;
             }
-            int destinationX = (int) (sceneX - (sceneX % 100));
-            int destinationY = (int) (sceneY - (sceneY % 100));
+            int destinationX = (int) (sceneX - (sceneX % BorderSize.getRC()));
+            int destinationY = (int) (sceneY - (sceneY % BorderSize.getRC()));
             if (isPossibleToMove(destinationX, destinationY)) {
                 move(destinationX, destinationY, queen, coordinate, type);
-            }
-            else if (isPossibleToFight(destinationX, destinationY)) {
+            } else if (isPossibleToFight(destinationX, destinationY)) {
                 FiguresContainer.removeFigure(new Coordinate(destinationX, destinationY));
                 System.out.println(FiguresContainer.getFigureList());
                 move(destinationX, destinationY, queen, coordinate, type);
-            }
-            else {
+            } else {
                 queen.setX(coordinate.getCoordinateX());
                 queen.setY(coordinate.getCoordinateY());
                 System.out.println("It's impossible to move here!");
@@ -71,28 +67,25 @@ public class Queen extends Figure {
             if (Math.abs(destinationY - currentY) == Math.abs(destinationX - currentX)) {
                 System.out.println("multiply= " + multiply);
                 if (currentX < destinationX && currentY < destinationY) {
-                    for (int i = 100; i <= multiply; i += 100) {
+                    for (int i = (int) BorderSize.getRC(); i <= multiply; i += BorderSize.getRC()) {
                         if (!CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(currentX + i, currentY + i)).equals("n")) {
                             return false;
                         }
                     }
-                }
-                else  if (currentX > destinationX && currentY > destinationY){
-                    for (int i = 100; i <= multiply; i += 100) {
+                } else if (currentX > destinationX && currentY > destinationY) {
+                    for (int i = (int) BorderSize.getRC(); i <= multiply; i += BorderSize.getRC()) {
                         if (!CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(currentX - i, currentY - i)).equals("n")) {
                             return false;
                         }
                     }
-                }
-                else  if (currentX < destinationX && currentY > destinationY){
-                    for (int i = 100; i <= multiply; i += 100) {
+                } else if (currentX < destinationX && currentY > destinationY) {
+                    for (int i = (int) BorderSize.getRC(); i <= multiply; i += BorderSize.getRC()) {
                         if (!CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(currentX + i, currentY - i)).equals("n")) {
                             return false;
                         }
                     }
-                }
-                else  if (currentX > destinationX && currentY < destinationY){
-                    for (int i = 100; i <= multiply; i += 100) {
+                } else if (currentX > destinationX && currentY < destinationY) {
+                    for (int i = (int) BorderSize.getRC(); i <= multiply; i += BorderSize.getRC()) {
                         if (!CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(currentX - i, currentY + i)).equals("n")) {
                             return false;
                         }
@@ -101,16 +94,16 @@ public class Queen extends Figure {
                 return true;
             }
             //ROOK
-            else if (currentX == destinationX || currentY == destinationY){
+            else if (currentX == destinationX || currentY == destinationY) {
                 if (destinationX == currentX) {
                     if (destinationY > currentY) {
-                        for (double i = currentY + 100; i <= destinationY; i += 100) {
+                        for (double i = currentY + BorderSize.getRC(); i <= destinationY; i += BorderSize.getRC()) {
                             if (!CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(currentX, i)).equals("n")) {
                                 return false;
                             }
                         }
                     } else {
-                        for (double i = currentY - 100; i >= destinationY; i -= 100) {
+                        for (double i = currentY - BorderSize.getRC(); i >= destinationY; i -= BorderSize.getRC()) {
                             if (!CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(currentX, i)).equals("n")) {
                                 return false;
                             }
@@ -118,14 +111,13 @@ public class Queen extends Figure {
                     }
                 } else if (destinationY == currentY) {
                     if (destinationX > currentX) {
-                        for (double i = currentX + 100; i <= destinationX; i += 100) {
+                        for (double i = currentX + BorderSize.getRC(); i <= destinationX; i += BorderSize.getRC()) {
                             if (!CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(i, currentY)).equals("n")) {
                                 return false;
                             }
                         }
-                    }
-                    else {
-                        for (double i = currentX - 100; i >= destinationX; i -= 100) {
+                    } else {
+                        for (double i = currentX - BorderSize.getRC(); i >= destinationX; i -= BorderSize.getRC()) {
                             if (!CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(i, currentY)).equals("n")) {
                                 return false;
                             }

@@ -13,10 +13,9 @@ public class Knight extends Figure {
     private String type;
 
     public Knight(Coordinate coordinate, String type) {
-        if (type.equals("b")){
+        if (type.equals("b")) {
             knight = new ImageView(new Image("/images/bN.png"));
-        }
-        else {
+        } else {
             knight = new ImageView(new Image("/images/wN.png"));
         }
         knight.setX(coordinate.getCoordinateX());
@@ -36,23 +35,21 @@ public class Knight extends Figure {
             knight.setEffect(null);
             double sceneX = event.getSceneX();
             double sceneY = event.getSceneY();
-            if (sceneX > 800 || sceneY > 800 || sceneX < 0 || sceneY < 0){
+            if (sceneX > BorderSize.getRC() * 8 || sceneY > BorderSize.getRC() * 8 || sceneX < 0 || sceneY < 0) {
                 System.out.println("It's impossible to move here!");
                 knight.setX(coordinate.getCoordinateX());
                 knight.setY(coordinate.getCoordinateY());
                 return;
             }
-            int destinationX = (int) (sceneX - (sceneX % 100));
-            int destinationY = (int) (sceneY - (sceneY % 100));
-            if (isPossibleToFight(destinationX, destinationY)){
+            int destinationX = (int) (sceneX - (sceneX % BorderSize.getRC()));
+            int destinationY = (int) (sceneY - (sceneY % BorderSize.getRC()));
+            if (isPossibleToFight(destinationX, destinationY)) {
                 FiguresContainer.removeFigure(new Coordinate(destinationX, destinationY));
                 move(destinationX, destinationY, knight, coordinate, type);
-            }
-            else if (isPossibleToMove(destinationX, destinationY)){
+            } else if (isPossibleToMove(destinationX, destinationY)) {
                 move(destinationX, destinationY, knight, coordinate, type);
 
-            }
-            else {
+            } else {
                 knight.setX(coordinate.getCoordinateX());
                 knight.setY(coordinate.getCoordinateY());
                 System.out.println("It's impossible to move here!");
@@ -64,13 +61,12 @@ public class Knight extends Figure {
     public boolean isPossibleToMove(int destinationX, int destinationY) {
         int currentX = (int) this.coordinate.getCoordinateX();
         int currentY = (int) this.coordinate.getCoordinateY();
-        if (!CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(destinationX, destinationY)).equals("n")){
+        if (!CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(destinationX, destinationY)).equals("n")) {
             return false;
         }
-        if (Math.abs(destinationY - currentY)  == 200 && Math.abs(destinationX - currentX) == 100){
+        if (Math.abs(destinationY - currentY) == BorderSize.getRC() * 2 && Math.abs(destinationX - currentX) == BorderSize.getRC()) {
             return true;
-        }
-        else if (Math.abs(destinationY - currentY)  == 100 && Math.abs(destinationX - currentX) == 200){
+        } else if (Math.abs(destinationY - currentY) == BorderSize.getRC() && Math.abs(destinationX - currentX) == BorderSize.getRC() * 2) {
             return true;
         }
         return false;
@@ -78,7 +74,7 @@ public class Knight extends Figure {
 
     @Override
     public boolean isPossibleToFight(int destinationX, int destinationY) {
-        if (type.equals("b")){
+        if (type.equals("b")) {
             return CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(destinationX, destinationY)).equals("w");
         }
         return CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(destinationX, destinationY)).equals("b");

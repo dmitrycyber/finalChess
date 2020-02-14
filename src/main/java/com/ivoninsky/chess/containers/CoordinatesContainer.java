@@ -2,7 +2,6 @@ package com.ivoninsky.chess.containers;
 
 import com.ivoninsky.chess.border.BorderSize;
 import com.ivoninsky.chess.coordinates.Coordinate;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,76 +10,76 @@ public class CoordinatesContainer {
 
     private Map<Coordinate, String> coordinateStringMap;
     private Coordinate a8 = new Coordinate(0, 0);
-    private Coordinate b8 = new Coordinate(BorderSize.getRC()*1, 0);
-    private Coordinate c8 = new Coordinate(BorderSize.getRC()*2, 0);
-    private Coordinate d8 = new Coordinate(BorderSize.getRC()*3, 0);
-    private Coordinate e8 = new Coordinate(BorderSize.getRC()*4, 0);
-    private Coordinate f8 = new Coordinate(BorderSize.getRC()*5, 0);
-    private Coordinate g8 = new Coordinate(BorderSize.getRC()*6, 0);
-    private Coordinate h8 = new Coordinate(BorderSize.getRC()*7, 0);
+    private Coordinate b8 = new Coordinate(BorderSize.getRC() * 1, 0);
+    private Coordinate c8 = new Coordinate(BorderSize.getRC() * 2, 0);
+    private Coordinate d8 = new Coordinate(BorderSize.getRC() * 3, 0);
+    private Coordinate e8 = new Coordinate(BorderSize.getRC() * 4, 0);
+    private Coordinate f8 = new Coordinate(BorderSize.getRC() * 5, 0);
+    private Coordinate g8 = new Coordinate(BorderSize.getRC() * 6, 0);
+    private Coordinate h8 = new Coordinate(BorderSize.getRC() * 7, 0);
 
-    private Coordinate a7 = new Coordinate(0, BorderSize.getRC()*1);
-    private Coordinate b7 = new Coordinate(BorderSize.getRC()*1, BorderSize.getRC()*1);
-    private Coordinate c7 = new Coordinate(BorderSize.getRC()*2, BorderSize.getRC()*1);
-    private Coordinate d7 = new Coordinate(BorderSize.getRC()*3, BorderSize.getRC()*1);
-    private Coordinate e7 = new Coordinate(BorderSize.getRC()*4, BorderSize.getRC()*1);
-    private Coordinate f7 = new Coordinate(BorderSize.getRC()*5, BorderSize.getRC()*1);
-    private Coordinate g7 = new Coordinate(BorderSize.getRC()*6, BorderSize.getRC()*1);
-    private Coordinate h7 = new Coordinate(BorderSize.getRC()*7, BorderSize.getRC()*1);
+    private Coordinate a7 = new Coordinate(0, BorderSize.getRC() * 1);
+    private Coordinate b7 = new Coordinate(BorderSize.getRC() * 1, BorderSize.getRC() * 1);
+    private Coordinate c7 = new Coordinate(BorderSize.getRC() * 2, BorderSize.getRC() * 1);
+    private Coordinate d7 = new Coordinate(BorderSize.getRC() * 3, BorderSize.getRC() * 1);
+    private Coordinate e7 = new Coordinate(BorderSize.getRC() * 4, BorderSize.getRC() * 1);
+    private Coordinate f7 = new Coordinate(BorderSize.getRC() * 5, BorderSize.getRC() * 1);
+    private Coordinate g7 = new Coordinate(BorderSize.getRC() * 6, BorderSize.getRC() * 1);
+    private Coordinate h7 = new Coordinate(BorderSize.getRC() * 7, BorderSize.getRC() * 1);
 
-    private Coordinate a6 = new Coordinate(0, 200);
-    private Coordinate b6 = new Coordinate(BorderSize.getRC()*1, BorderSize.getRC()*2);
-    private Coordinate c6 = new Coordinate(BorderSize.getRC()*2, BorderSize.getRC()*2);
-    private Coordinate d6 = new Coordinate(BorderSize.getRC()*3, BorderSize.getRC()*2);
-    private Coordinate e6 = new Coordinate(BorderSize.getRC()*4, BorderSize.getRC()*2);
-    private Coordinate f6 = new Coordinate(BorderSize.getRC()*5, BorderSize.getRC()*2);
-    private Coordinate g6 = new Coordinate(BorderSize.getRC()*6, BorderSize.getRC()*2);
-    private Coordinate h6 = new Coordinate(BorderSize.getRC()*7, BorderSize.getRC()*2);
+    private Coordinate a6 = new Coordinate(0, BorderSize.getRC() * 2);
+    private Coordinate b6 = new Coordinate(BorderSize.getRC() * 1, BorderSize.getRC() * 2);
+    private Coordinate c6 = new Coordinate(BorderSize.getRC() * 2, BorderSize.getRC() * 2);
+    private Coordinate d6 = new Coordinate(BorderSize.getRC() * 3, BorderSize.getRC() * 2);
+    private Coordinate e6 = new Coordinate(BorderSize.getRC() * 4, BorderSize.getRC() * 2);
+    private Coordinate f6 = new Coordinate(BorderSize.getRC() * 5, BorderSize.getRC() * 2);
+    private Coordinate g6 = new Coordinate(BorderSize.getRC() * 6, BorderSize.getRC() * 2);
+    private Coordinate h6 = new Coordinate(BorderSize.getRC() * 7, BorderSize.getRC() * 2);
 
-    private Coordinate a5 = new Coordinate(0, BorderSize.getRC()*3);
-    private Coordinate b5 = new Coordinate(BorderSize.getRC()*1, BorderSize.getRC()*3);
-    private Coordinate c5 = new Coordinate(BorderSize.getRC()*2, BorderSize.getRC()*3);
-    private Coordinate d5 = new Coordinate(BorderSize.getRC()*3, BorderSize.getRC()*3);
-    private Coordinate e5 = new Coordinate(BorderSize.getRC()*4, BorderSize.getRC()*3);
-    private Coordinate f5 = new Coordinate(BorderSize.getRC()*5, BorderSize.getRC()*3);
-    private Coordinate g5 = new Coordinate(BorderSize.getRC()*6, BorderSize.getRC()*3);
-    private Coordinate h5 = new Coordinate(BorderSize.getRC()*7, BorderSize.getRC()*3);
+    private Coordinate a5 = new Coordinate(0, BorderSize.getRC() * 3);
+    private Coordinate b5 = new Coordinate(BorderSize.getRC() * 1, BorderSize.getRC() * 3);
+    private Coordinate c5 = new Coordinate(BorderSize.getRC() * 2, BorderSize.getRC() * 3);
+    private Coordinate d5 = new Coordinate(BorderSize.getRC() * 3, BorderSize.getRC() * 3);
+    private Coordinate e5 = new Coordinate(BorderSize.getRC() * 4, BorderSize.getRC() * 3);
+    private Coordinate f5 = new Coordinate(BorderSize.getRC() * 5, BorderSize.getRC() * 3);
+    private Coordinate g5 = new Coordinate(BorderSize.getRC() * 6, BorderSize.getRC() * 3);
+    private Coordinate h5 = new Coordinate(BorderSize.getRC() * 7, BorderSize.getRC() * 3);
 
-    private Coordinate a4 = new Coordinate(0, BorderSize.getRC()*4);
-    private Coordinate b4 = new Coordinate(BorderSize.getRC()*1, BorderSize.getRC()*4);
-    private Coordinate c4 = new Coordinate(BorderSize.getRC()*2, BorderSize.getRC()*4);
-    private Coordinate d4 = new Coordinate(BorderSize.getRC()*3, BorderSize.getRC()*4);
-    private Coordinate e4 = new Coordinate(BorderSize.getRC()*4, BorderSize.getRC()*4);
-    private Coordinate f4 = new Coordinate(BorderSize.getRC()*5, BorderSize.getRC()*4);
-    private Coordinate g4 = new Coordinate(BorderSize.getRC()*6, BorderSize.getRC()*4);
-    private Coordinate h4 = new Coordinate(BorderSize.getRC()*7, BorderSize.getRC()*4);
+    private Coordinate a4 = new Coordinate(0, BorderSize.getRC() * 4);
+    private Coordinate b4 = new Coordinate(BorderSize.getRC() * 1, BorderSize.getRC() * 4);
+    private Coordinate c4 = new Coordinate(BorderSize.getRC() * 2, BorderSize.getRC() * 4);
+    private Coordinate d4 = new Coordinate(BorderSize.getRC() * 3, BorderSize.getRC() * 4);
+    private Coordinate e4 = new Coordinate(BorderSize.getRC() * 4, BorderSize.getRC() * 4);
+    private Coordinate f4 = new Coordinate(BorderSize.getRC() * 5, BorderSize.getRC() * 4);
+    private Coordinate g4 = new Coordinate(BorderSize.getRC() * 6, BorderSize.getRC() * 4);
+    private Coordinate h4 = new Coordinate(BorderSize.getRC() * 7, BorderSize.getRC() * 4);
 
-    private Coordinate a3 = new Coordinate(0, BorderSize.getRC()*5);
-    private Coordinate b3 = new Coordinate(BorderSize.getRC()*1, BorderSize.getRC()*5);
-    private Coordinate c3 = new Coordinate(BorderSize.getRC()*2, BorderSize.getRC()*5);
-    private Coordinate d3 = new Coordinate(BorderSize.getRC()*3, BorderSize.getRC()*5);
-    private Coordinate e3 = new Coordinate(BorderSize.getRC()*4, BorderSize.getRC()*5);
-    private Coordinate f3 = new Coordinate(BorderSize.getRC()*5, BorderSize.getRC()*5);
-    private Coordinate g3 = new Coordinate(BorderSize.getRC()*6, BorderSize.getRC()*5);
-    private Coordinate h3 = new Coordinate(BorderSize.getRC()*7, BorderSize.getRC()*5);
+    private Coordinate a3 = new Coordinate(0, BorderSize.getRC() * 5);
+    private Coordinate b3 = new Coordinate(BorderSize.getRC() * 1, BorderSize.getRC() * 5);
+    private Coordinate c3 = new Coordinate(BorderSize.getRC() * 2, BorderSize.getRC() * 5);
+    private Coordinate d3 = new Coordinate(BorderSize.getRC() * 3, BorderSize.getRC() * 5);
+    private Coordinate e3 = new Coordinate(BorderSize.getRC() * 4, BorderSize.getRC() * 5);
+    private Coordinate f3 = new Coordinate(BorderSize.getRC() * 5, BorderSize.getRC() * 5);
+    private Coordinate g3 = new Coordinate(BorderSize.getRC() * 6, BorderSize.getRC() * 5);
+    private Coordinate h3 = new Coordinate(BorderSize.getRC() * 7, BorderSize.getRC() * 5);
 
-    private Coordinate a2 = new Coordinate(0, BorderSize.getRC()*6);
-    private Coordinate b2 = new Coordinate(BorderSize.getRC()*1, BorderSize.getRC()*6);
-    private Coordinate c2 = new Coordinate(BorderSize.getRC()*2, BorderSize.getRC()*6);
-    private Coordinate d2 = new Coordinate(BorderSize.getRC()*3, BorderSize.getRC()*6);
-    private Coordinate e2 = new Coordinate(BorderSize.getRC()*4, BorderSize.getRC()*6);
-    private Coordinate f2 = new Coordinate(BorderSize.getRC()*5, BorderSize.getRC()*6);
-    private Coordinate g2 = new Coordinate(BorderSize.getRC()*6, BorderSize.getRC()*6);
-    private Coordinate h2 = new Coordinate(BorderSize.getRC()*7, BorderSize.getRC()*6);
+    private Coordinate a2 = new Coordinate(0, BorderSize.getRC() * 6);
+    private Coordinate b2 = new Coordinate(BorderSize.getRC() * 1, BorderSize.getRC() * 6);
+    private Coordinate c2 = new Coordinate(BorderSize.getRC() * 2, BorderSize.getRC() * 6);
+    private Coordinate d2 = new Coordinate(BorderSize.getRC() * 3, BorderSize.getRC() * 6);
+    private Coordinate e2 = new Coordinate(BorderSize.getRC() * 4, BorderSize.getRC() * 6);
+    private Coordinate f2 = new Coordinate(BorderSize.getRC() * 5, BorderSize.getRC() * 6);
+    private Coordinate g2 = new Coordinate(BorderSize.getRC() * 6, BorderSize.getRC() * 6);
+    private Coordinate h2 = new Coordinate(BorderSize.getRC() * 7, BorderSize.getRC() * 6);
 
-    private Coordinate a1 = new Coordinate(0, BorderSize.getRC()*7);
-    private Coordinate b1 = new Coordinate(BorderSize.getRC()*1, BorderSize.getRC()*7);
-    private Coordinate c1 = new Coordinate(BorderSize.getRC()*2, BorderSize.getRC()*7);
-    private Coordinate d1 = new Coordinate(BorderSize.getRC()*3, BorderSize.getRC()*7);
-    private Coordinate e1 = new Coordinate(BorderSize.getRC()*4, BorderSize.getRC()*7);
-    private Coordinate f1 = new Coordinate(BorderSize.getRC()*5, BorderSize.getRC()*7);
-    private Coordinate g1 = new Coordinate(BorderSize.getRC()*6, BorderSize.getRC()*7);
-    private Coordinate h1 = new Coordinate(BorderSize.getRC()*7, BorderSize.getRC()*7);
+    private Coordinate a1 = new Coordinate(0, BorderSize.getRC() * 7);
+    private Coordinate b1 = new Coordinate(BorderSize.getRC() * 1, BorderSize.getRC() * 7);
+    private Coordinate c1 = new Coordinate(BorderSize.getRC() * 2, BorderSize.getRC() * 7);
+    private Coordinate d1 = new Coordinate(BorderSize.getRC() * 3, BorderSize.getRC() * 7);
+    private Coordinate e1 = new Coordinate(BorderSize.getRC() * 4, BorderSize.getRC() * 7);
+    private Coordinate f1 = new Coordinate(BorderSize.getRC() * 5, BorderSize.getRC() * 7);
+    private Coordinate g1 = new Coordinate(BorderSize.getRC() * 6, BorderSize.getRC() * 7);
+    private Coordinate h1 = new Coordinate(BorderSize.getRC() * 7, BorderSize.getRC() * 7);
 
 
     private CoordinatesContainer() {
@@ -159,8 +158,8 @@ public class CoordinatesContainer {
         coordinateStringMap.put(h1, "n");
     }
 
-    public static CoordinatesContainer getInstance(){
-        if (coordinatesContainer == null){
+    public static CoordinatesContainer getInstance() {
+        if (coordinatesContainer == null) {
             coordinatesContainer = new CoordinatesContainer();
         }
         return coordinatesContainer;
@@ -429,7 +428,7 @@ public class CoordinatesContainer {
         return h1;
     }
 
-    public void printField(){
+    public void printField() {
         System.out.println("-----------------------------------------------------------------");
         System.out.println(coordinateStringMap.get(a8) + "\t" + coordinateStringMap.get(b8) + "\t" + coordinateStringMap.get(c8) + "\t" + coordinateStringMap.get(d8) + "\t" + coordinateStringMap.get(e8) + "\t" + coordinateStringMap.get(f8) + "\t" + coordinateStringMap.get(g8) + "\t" + coordinateStringMap.get(h8));
         System.out.println(coordinateStringMap.get(a7) + "\t" + coordinateStringMap.get(b7) + "\t" + coordinateStringMap.get(c7) + "\t" + coordinateStringMap.get(d7) + "\t" + coordinateStringMap.get(e7) + "\t" + coordinateStringMap.get(f7) + "\t" + coordinateStringMap.get(g7) + "\t" + coordinateStringMap.get(h7));

@@ -88,29 +88,31 @@ public class FiguresContainer {
         addFigureToCoordinateMap(whitePawn1, whitePawn2, whitePawn3, whitePawn4, whitePawn5, whitePawn6, whitePawn7, whitePawn8, blackPawn1, blackPawn2, blackPawn3, blackPawn4, blackPawn5, blackPawn6, blackPawn7, blackPawn8, whiteRook1, whiteRook2, blackRook1, blackRook2, whiteBishop1, whiteBishop2, blackBishop1, blackBishop2, whiteKnight1, whiteKnight2, blackKnight1, blackKnight2, whiteKing, blackKing, whiteQueen, blackQueen);
     }
 
-    private void addFigureToCoordinateMap(Figure... figures){
-        for (Figure figure : figures){
+    private void addFigureToCoordinateMap(Figure... figures) {
+        for (Figure figure : figures) {
             CoordinatesContainer.getInstance().getCoordinateStringMap().put(figure.getCoordinate(), figure.getTypeOfFigure());
         }
     }
-    private void addFigureToList(Figure ... figures){
+
+    private void addFigureToList(Figure... figures) {
         figureList.addAll(Arrays.asList(figures));
 
     }
-    public static List<Figure> getFigureList(){
+
+    public static List<Figure> getFigureList() {
         return figureList;
     }
 
-    public static void removeFigure(Coordinate coordinate){
+    public static void removeFigure(Coordinate coordinate) {
 
         Figure figure = null;
         for (int i = 0; i < figureList.size(); i++) {
-            if (figureList.get(i).getCoordinate().equals(coordinate)){
+            if (figureList.get(i).getCoordinate().equals(coordinate)) {
                 figure = figureList.get(i);
             }
         }
-        if (figure instanceof King){
-            if (figure.getTypeOfFigure().equals("w")){
+        if (figure instanceof King) {
+            if (figure.getTypeOfFigure().equals("w")) {
                 System.out.println("BLACK WINNER!!!");
                 System.exit(1);
             }
@@ -122,7 +124,7 @@ public class FiguresContainer {
         root.getChildren().removeAll(figure.getImage());
     }
 
-    public static List<Figure> getFiguresFromType(String type){
+    public static List<Figure> getFiguresFromType(String type) {
         return figureList
                 .stream()
                 .filter(figure -> figure.getTypeOfFigure().equals(type))

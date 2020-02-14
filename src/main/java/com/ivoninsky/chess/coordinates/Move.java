@@ -1,14 +1,16 @@
 package com.ivoninsky.chess.coordinates;
 
+import com.ivoninsky.chess.border.BorderSize;
+
 public enum Move {
-    UP (new Coordinate(0, -100)),
-    DOWN (new Coordinate(0, 100)),
-    LEFT (new Coordinate(-100, 0)),
-    RIGHT (new Coordinate(100, 0)),
-    RIGHT_UP (new Coordinate(100, -100)),
-    LEFT_UP (new Coordinate(-100, -100)),
-    RIGHT_DOWN (new Coordinate(100, 100)),
-    LEFT_DOWN (new Coordinate(-100, 100));
+    UP(new Coordinate(0, -BorderSize.getRC())),
+    DOWN(new Coordinate(0, BorderSize.getRC())),
+    LEFT(new Coordinate(-BorderSize.getRC(), 0)),
+    RIGHT(new Coordinate(BorderSize.getRC(), 0)),
+    RIGHT_UP(new Coordinate(BorderSize.getRC(), -BorderSize.getRC())),
+    LEFT_UP(new Coordinate(-BorderSize.getRC(), -BorderSize.getRC())),
+    RIGHT_DOWN(new Coordinate(BorderSize.getRC(), BorderSize.getRC())),
+    LEFT_DOWN(new Coordinate(-BorderSize.getRC(), BorderSize.getRC()));
 
     private Coordinate coordinate;
 
@@ -16,7 +18,7 @@ public enum Move {
         this.coordinate = coordinate;
     }
 
-    public Coordinate getCoordinate(){
+    public Coordinate getCoordinate() {
         coordinate.setCoordinateX(coordinate.getCoordinateX());
         coordinate.setCoordinateY(coordinate.getCoordinateY());
         return coordinate;

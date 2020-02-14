@@ -4,7 +4,6 @@ import com.ivoninsky.chess.border.BorderSize;
 import com.ivoninsky.chess.coordinates.Coordinate;
 import com.ivoninsky.chess.containers.CoordinatesContainer;
 import com.ivoninsky.chess.containers.FiguresContainer;
-import javafx.scene.effect.ColorInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -29,30 +28,27 @@ public class Bishop extends Figure {
 
     @Override
     public void moveFigure() {
-        ColorInput colorInput = new ColorInput();
         setMoveAnimation(bishop);
         bishop.setOnMouseReleased(event ->
         {
             bishop.setEffect(null);
             double sceneX = event.getSceneX();
             double sceneY = event.getSceneY();
-            if (sceneX > 800 || sceneY > 800 || sceneX < 0 || sceneY < 0) {
+            if (sceneX > BorderSize.getRC() * 8 || sceneY > BorderSize.getRC() * 8 || sceneX < 0 || sceneY < 0) {
                 bishop.setX(coordinate.getCoordinateX());
                 bishop.setY(coordinate.getCoordinateY());
                 System.out.println("It's impossible to move here!");
                 return;
             }
-            int destinationX = (int) (sceneX - (sceneX % 100));
-            int destinationY = (int) (sceneY - (sceneY % 100));
+            int destinationX = (int) (sceneX - (sceneX % BorderSize.getRC()));
+            int destinationY = (int) (sceneY - (sceneY % BorderSize.getRC()));
             if (isPossibleToMove(destinationX, destinationY)) {
                 move(destinationX, destinationY, bishop, coordinate, type);
-            }
-            else if (isPossibleToFight(destinationX, destinationY)) {
+            } else if (isPossibleToFight(destinationX, destinationY)) {
                 FiguresContainer.removeFigure(new Coordinate(destinationX, destinationY));
                 System.out.println(FiguresContainer.getFigureList());
                 move(destinationX, destinationY, bishop, coordinate, type);
-            }
-            else {
+            } else {
                 bishop.setX(coordinate.getCoordinateX());
                 bishop.setY(coordinate.getCoordinateY());
                 System.out.println("It's impossible to move here!");
@@ -71,28 +67,25 @@ public class Bishop extends Figure {
         if (Math.abs(destinationY - currentY) == Math.abs(destinationX - currentX)) {
             System.out.println("multiply= " + multiply);
             if (currentX < destinationX && currentY < destinationY) {
-                for (int i = 100; i < multiply; i += 100) {
+                for (int i = (int) BorderSize.getRC(); i < multiply; i += BorderSize.getRC()) {
                     if (!CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(currentX + i, currentY + i)).equals("n")) {
                         return false;
                     }
                 }
-            }
-            else  if (currentX > destinationX && currentY > destinationY){
-                for (int i = 100; i < multiply; i += 100) {
+            } else if (currentX > destinationX && currentY > destinationY) {
+                for (int i = (int) BorderSize.getRC(); i < multiply; i += BorderSize.getRC()) {
                     if (!CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(currentX - i, currentY - i)).equals("n")) {
                         return false;
                     }
                 }
-            }
-            else  if (currentX < destinationX && currentY > destinationY){
-                for (int i = 100; i < multiply; i += 100) {
+            } else if (currentX < destinationX && currentY > destinationY) {
+                for (int i = (int) BorderSize.getRC(); i < multiply; i += BorderSize.getRC()) {
                     if (!CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(currentX + i, currentY - i)).equals("n")) {
                         return false;
                     }
                 }
-            }
-            else  if (currentX > destinationX && currentY < destinationY){
-                for (int i = 100; i < multiply; i += 100) {
+            } else if (currentX > destinationX && currentY < destinationY) {
+                for (int i = (int) BorderSize.getRC(); i < multiply; i += BorderSize.getRC()) {
                     if (!CoordinatesContainer.getInstance().getCoordinateStringMap().get(new Coordinate(currentX - i, currentY + i)).equals("n")) {
                         return false;
                     }

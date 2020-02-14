@@ -23,17 +23,13 @@ public class App extends Application {
         Canvas canvas = new Border().paintBorder();
         Scene scene = new Scene(root, BorderSize.getAC(), BorderSize.getAC());
         root.getChildren().add(canvas);
-        primaryStage.setTitle("Chess");
+        primaryStage.setTitle("ShitChess");
         primaryStage.setScene(scene);
-
-        FiguresContainer figuresContainer = new FiguresContainer(root);
-        List<Figure> figureList = FiguresContainer.getFigureList();
-
-        for (Figure figure : figureList){
+        List<Figure> figureList = new FiguresContainer(root).getFigureList();
+        for (Figure figure : figureList) {
             root.getChildren().add(figure.getImage());
             figure.moveFigure();
         }
         primaryStage.show();
-
     }
 }
