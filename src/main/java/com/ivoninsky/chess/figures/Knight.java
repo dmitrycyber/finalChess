@@ -37,6 +37,8 @@ public class Knight extends Figure {
             double sceneY = event.getSceneY();
             if (sceneX > 800 || sceneY > 800 || sceneX < 0 || sceneY < 0){
                 System.out.println("It's impossible to move here!");
+                knight.setX(coordinate.getCoordinateX());
+                knight.setY(coordinate.getCoordinateY());
                 return;
             }
             int destinationX = (int) (sceneX - (sceneX % 100));
@@ -50,6 +52,8 @@ public class Knight extends Figure {
 
             }
             else {
+                knight.setX(coordinate.getCoordinateX());
+                knight.setY(coordinate.getCoordinateY());
                 System.out.println("It's impossible to move here!");
             }
         });

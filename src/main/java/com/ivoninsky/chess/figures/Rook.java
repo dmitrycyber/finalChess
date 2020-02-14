@@ -35,6 +35,8 @@ public class Rook extends Figure {
             double sceneY = event.getSceneY();
             if (sceneX > 800 || sceneY > 800 || sceneX < 0 || sceneY < 0) {
                 System.out.println("It's impossible to move here!");
+                rook.setX(coordinate.getCoordinateX());
+                rook.setY(coordinate.getCoordinateY());
                 return;
             }
             int destinationX = (int) (sceneX - (sceneX % 100));
@@ -48,6 +50,8 @@ public class Rook extends Figure {
                 move(destinationX, destinationY, rook, coordinate, type);
             }
             else {
+                rook.setX(coordinate.getCoordinateX());
+                rook.setY(coordinate.getCoordinateY());
                 System.out.println("It's impossible to move here!");
             }
         });

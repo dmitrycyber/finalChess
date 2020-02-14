@@ -38,6 +38,8 @@ public class Queen extends Figure {
             double sceneY = event.getSceneY();
             if (sceneX > 800 || sceneY > 800 || sceneX < 0 || sceneY < 0) {
                 System.out.println("It's impossible to move here!");
+                queen.setX(coordinate.getCoordinateX());
+                queen.setY(coordinate.getCoordinateY());
                 return;
             }
             int destinationX = (int) (sceneX - (sceneX % 100));
@@ -51,6 +53,8 @@ public class Queen extends Figure {
                 move(destinationX, destinationY, queen, coordinate, type);
             }
             else {
+                queen.setX(coordinate.getCoordinateX());
+                queen.setY(coordinate.getCoordinateY());
                 System.out.println("It's impossible to move here!");
             }
         });
