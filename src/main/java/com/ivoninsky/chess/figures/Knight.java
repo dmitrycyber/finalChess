@@ -43,6 +43,7 @@ public class Knight extends Figure {
             }
             int destinationX = (int) (sceneX - (sceneX % BorderSize.getRC()));
             int destinationY = (int) (sceneY - (sceneY % BorderSize.getRC()));
+
             if (isPossibleToFight(destinationX, destinationY)) {
                 FiguresContainer.removeFigure(new Coordinate(destinationX, destinationY));
                 move(destinationX, destinationY, knight, coordinate, type);

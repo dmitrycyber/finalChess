@@ -11,4 +11,12 @@ public class BorderSize {
     public static double getRC() {
         return RC;
     }
+
+    public static void setAC(double AC) {
+        BorderSize.AC = AC;
+    }
+
+    public static void setRC(double RC) {
+        BorderSize.RC = RC;
+    }
 }
